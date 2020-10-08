@@ -1,0 +1,14 @@
+.top {
+  height: 40vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url(banner.jpg);
+  background-size: cover;
+  /**/
+  background-position: center;
+  position: relative;
+}
+
+.btn-primary {
+    background: green !important;
+    border-color: green !important;
+}
