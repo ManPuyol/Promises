@@ -25,6 +25,8 @@ function deleteLoader() {
   let el = document.getElementById("loader");
   el.parentNode.removeChild(el);
 }
+//cambio
+
 
 function setup() {
   noCanvas();
