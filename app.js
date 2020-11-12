@@ -2,64 +2,44 @@ const wordnikAPI =
   "https://api.wordnik.com/v4/words.json/randomWord?&api_key=48dd829661f515d5abc0d03197a00582e888cc7da2484d5c7";
 const giphyAPI =
   "https://api.giphy.com/v1/gifs/search?api_key=hK6EInRGwQIIv1JKslPVuLDlRft9JZJ4&limit=25&offset=0&rating=pg&lang=en&q=";
-
 const LoaderHTML =
   '<div id="spinLoader" class="spinner-border text-info" role="status"><span class="sr-only">Loading...</span></div><h5>   </h5>';
 
 const notFound =
   "https://v3b4d4f5.rocketcdn.me/wp-content/uploads/1/feature-image-soft-404-errors-150x150.png";
 
-// function showImg(url) {
-//   let imgCode = `<img src="${url}">`;
-
-//   document.getElementById("container").insertAdjacentHTML("beforeend", imgCode);
-
-//   //<img src="dinosaur.jpg">
-// }
-
-// function showText(word) {
-//   let wordCode = `<h5>${word}</h5>`;
-
-//   document.getElementById("container").insertAdjacentHTML("beforeend", wordCode);
-// }
-
 function showContainer(word, url) {
   let containerCode = `<h5>${word}</h5> <img src="${url}">`;
-  document.getElementById("container").innerHTML = containerCode;
+  document
+    .getElementById("container")
+    .insertAdjacentHTML("beforeend", containerCode);
 }
 
 function testLoader() {
   document
-    .getElementById("container")
+    .getElementById("loader")
     .insertAdjacentHTML("afterbegin", LoaderHTML);
 }
 
 function deleteLoader() {
-            
-  let el =  document.getElementById("spinLoader");
+  let el = document.getElementById("loader");
   el.parentNode.removeChild(el);
-  
 }
+//cambio
+
 
 function setup() {
   noCanvas();
-
-  //   document.getElementById("btn-test").addEventListener("click", testLoader);
-  //document.getElementById("container").innerHTML = LoaderHTML; //THIS CHANGES THE CODE INSIDE A DIV
-  //AFTER ARRAY
   let promises = [];
 
-  for (i = 2; i < 4; i++) {
+  for (i = 2; i < 7; i++) {
     promises.push(wordGIF(i));
   }
-
-  // console.log(promises[0]);
 
   Promise.all(promises)
     .then((results) => {
       deleteLoader();
       for (i = 0; i < results.length; i++) {
-        //console.log(results[i].word);
         if (results[i].img !== null) {
           showContainer(results[i].word, results[i].img);
         } else {
@@ -68,25 +48,6 @@ function setup() {
       }
     })
     .catch((err) => console.log(err));
-
-  //BEFORE ARRAY
-  // Promise.all(promises).
-  // then(results => {
-  //     createP(results.word);
-  //     createImg(results.img);
-  // }).catch(err => console.log(err));
-
-  // wordGIF(4).
-  // then(results => {
-  //     createP(results.word);
-  //     createImg(results.img);
-  // }).catch(err => console.log(err));
-
-  // wordGIF(5).
-  // then(results => {
-  //     createP(results.word);
-  //     createImg(results.img);
-  // }).catch(err => console.log(err));
 }
 
 async function wordGIF(num) {
@@ -111,35 +72,39 @@ async function wordGIF(num) {
     }
   } catch (error) {}
 
-  //if   success dom cambia quitando loader
-  // else  quitar loader, poner error
-
-  // document.getelmby. = loader;
-
-  //try catch
-  /**
-   * try
-   *    await
-   *    success
-   *            document.getelmby. = img;
-   * catch
-   *    revisas codigo de error
-   *    document.getelmby. = msg de error;
-   */
-
   return {
     word: json1.word,
     img: img_url,
   };
-  //   OTHER WAY
-  // .then(response => response.json())
-  //   .then(json => {
-  //     createP(json.word);
-  //     return fetch(giphyAPI + json.word);
-  //   })
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     createImg(json.data[0].images['fixed_height_small'].url);
-  //   })
-  //   .catch(err => console.log(err));
 }
+//if   success dom cambia quitando loader
+// else  quitar loader, poner error
+
+// document.getelmby. = loader;
+
+//try catch
+/**
+ * try
+ *    await
+ *    success
+ *            document.getelmby. = img;
+ * catch
+ *    revisas codigo de error
+ *    document.getelmby. = msg de error;
+ */
+
+//   OTHER WAY
+// .then(response => response.json())
+//   .then(json => {
+//     createP(json.word);
+//     return fetch(giphyAPI + json.word);
+//   })
+//   .then(response => response.json())
+//   .then(json => {
+//     createImg(json.data[0].images['fixed_height_small'].url);
+//   })
+//   .catch(err => console.log(err));
+
+// const setup = () => {
+
+// }
