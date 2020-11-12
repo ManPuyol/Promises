@@ -1,0 +1,25 @@
+{
+  "name": "promises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "ts": "^0.2.2",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManPuyol/Promises.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManPuyol/Promises/issues"
+  },
+  "homepage": "https://github.com/ManPuyol/Promises#readme"
+}
