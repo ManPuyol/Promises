@@ -4,7 +4,6 @@ const giphyAPI =
   "https://api.giphy.com/v1/gifs/search?api_key=hK6EInRGwQIIv1JKslPVuLDlRft9JZJ4&limit=25&offset=0&rating=pg&lang=en&q=";
 const LoaderHTML =
   '<div class="lds-facebook"><div></div><div></div><div></div></div> ';
-
 const notFound =
   "https://v3b4d4f5.rocketcdn.me/wp-content/uploads/1/feature-image-soft-404-errors-150x150.png";
 
@@ -16,17 +15,13 @@ function showContainer(word, url) {
 }
 
 function testLoader() {
-  document
-    .getElementById("loader")
-    .insertAdjacentHTML("afterbegin", LoaderHTML);
+  document.getElementById("loader").insertAdjacentHTML("afterbegin", LoaderHTML);
 }
 
 function deleteLoader() {
   let el = document.getElementById("loader");
   el.parentNode.removeChild(el);
 }
-
-
 
 function setup() {
   let promises = [];
@@ -69,7 +64,7 @@ async function wordGIF(num) {
     } catch (err) {
       console.log("No Img found for " + json1.word);
     }
-  } catch (error) {}
+  } catch (error) { }
 
   return {
     word: json1.word,
@@ -77,3 +72,4 @@ async function wordGIF(num) {
   };
 }
 
+setup();
