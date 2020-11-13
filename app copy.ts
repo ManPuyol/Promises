@@ -3,7 +3,8 @@ const wordnikAPI =
 const giphyAPI =
   "https://api.giphy.com/v1/gifs/search?api_key=hK6EInRGwQIIv1JKslPVuLDlRft9JZJ4&limit=25&offset=0&rating=pg&lang=en&q=";
 const LoaderHTML =
-  '<div class="lds-facebook"><div></div><div></div><div></div></div> ';
+  '<div id="spinLoader" class="spinner-border text-info" role="status"><span class="sr-only">Loading...</span></div><h5>   </h5>';
+
 const notFound =
   "https://v3b4d4f5.rocketcdn.me/wp-content/uploads/1/feature-image-soft-404-errors-150x150.png";
 
@@ -15,11 +16,9 @@ function showContainer(word, url) {
 }
 
 function testLoader() {
-
   document
     .getElementById("loader")
     .insertAdjacentHTML("afterbegin", LoaderHTML);
-
 }
 
 function deleteLoader() {
@@ -30,6 +29,7 @@ function deleteLoader() {
 
 
 function setup() {
+  noCanvas();
   let promises = [];
 
   for (i = 2; i < 7; i++) {
@@ -70,16 +70,41 @@ async function wordGIF(num) {
     } catch (err) {
       console.log("No Img found for " + json1.word);
     }
-
   } catch (error) {}
-
 
   return {
     word: json1.word,
     img: img_url,
   };
 }
+//if   success dom cambia quitando loader
+// else  quitar loader, poner error
 
+// document.getelmby. = loader;
 
-setup();
+//try catch
+/**
+ * try
+ *    await
+ *    success
+ *            document.getelmby. = img;
+ * catch
+ *    revisas codigo de error
+ *    document.getelmby. = msg de error;
+ */
 
+//   OTHER WAY
+// .then(response => response.json())
+//   .then(json => {
+//     createP(json.word);
+//     return fetch(giphyAPI + json.word);
+//   })
+//   .then(response => response.json())
+//   .then(json => {
+//     createImg(json.data[0].images['fixed_height_small'].url);
+//   })
+//   .catch(err => console.log(err));
+
+// const setup = () => {
+
+// }
