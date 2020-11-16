@@ -3,13 +3,24 @@ const path = require('path');
 module.exports = {
   entry: './app.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js'
   },
   module: {
     rules: [
-      { test: /\\.css$/, use: 'css-loader' },
-      { test: /\\.ts$/, use: 'ts-loader' }
+      {
+        test: /\\.s?css$/, use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      { test: /\\.js$/, use: 'babel-loader',
+      exclude: /node_modules/ }
     ]
+  },
+  devtool: 'eval',
+  devServer: {
+    contentBase: path.join(__dirname, 'public')
   }
 };
