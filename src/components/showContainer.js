@@ -1,7 +1,6 @@
 import { wordGIF } from './async/wordGIF'
 
-const notFound =
-  'https://v3b4d4f5.rocketcdn.me/wp-content/uploads/1/feature-image-soft-404-errors-150x150.png'
+
 
   function showContainer (word, url) {
   let containerCode = `<h5>${word}</h5> <img src="${url}">`

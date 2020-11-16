@@ -15,14 +15,17 @@ module.exports = {
           'sass-loader'
         ]
       },
-      { test: /\\.js$/, loader: 'babel-loader',
-      exclude: /node_modules/ }
+      { test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      }
     ]
   },
-  devtool: 'eval',
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    historyApiFallback: true,
-      publicPath: '/'
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    port: 9000
   }
 };
