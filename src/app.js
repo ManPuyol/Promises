@@ -1,9 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import 'normalize.css/normalize.css';
-import './styles/styles.scss';
-
-//ReactDOM.render(<p>This is my boilerplate</p>, document.getElementById('app'));
 const wordnikAPI =
   "https://api.wordnik.com/v4/words.json/randomWord?&api_key=48dd829661f515d5abc0d03197a00582e888cc7da2484d5c7";
 const giphyAPI =
