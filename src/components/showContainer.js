@@ -1,8 +1,6 @@
 import { wordGIF } from './async/wordGIF'
 
-
-
-  function showContainer (word, url) {
+function showContainer (word, url) {
   let containerCode = `<h5>${word}</h5> <img src="${url}">`
   document
     .getElementById('container')
@@ -34,4 +32,3 @@ export default function setup () {
     })
     .catch(err => console.log(err))
 }
-
