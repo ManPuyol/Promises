@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Setup from './components/showContainer'
-import LoaderHTML from './components/LoaderHTML'
+import GifList from './components/GifList'
 
 
-ReactDOM.render(<LoaderHTML/>, document.getElementById('app'));
+ReactDOM.render(<GifList/>, document.getElementById('app'));

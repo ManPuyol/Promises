@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
-const notFound =
-  'https://v3b4d4f5.rocketcdn.me/wp-content/uploads/1/feature-image-soft-404-errors-150x150.png'
-const wordnikAPI =
-  'https://api.wordnik.com/v4/words.json/randomWord?&api_key=48dd829661f515d5abc0d03197a00582e888cc7da2484d5c7'
-const giphyAPI =
-  'https://api.giphy.com/v1/gifs/search?api_key=hK6EInRGwQIIv1JKslPVuLDlRft9JZJ4&limit=25&offset=0&rating=pg&lang=en&q='
+import { giphyAPI, notFound, wordnikAPI } from '../URLs/URLs'
 
-export default function LoaderHTML () {
+export default function GifList () {
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -65,11 +60,12 @@ export default function LoaderHTML () {
   }
   return (
     <div>
-        {results.map(result => (
-          <div key='result.img'>
-              <p>{result.word ? result.word : 'Not Found'}</p>
-              <img src={result.img ? result.img : notFound} /></div>
-        ))}
+      {results.map(result => (
+        <div key='result.img' className='img__Container'>
+          <p>{result.word ? result.word : 'Not Found'}</p>
+          <img src={result.img ? result.img : notFound} />
+        </div>
+      ))}
     </div>
   )
 }
