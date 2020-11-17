@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { giphyAPI, notFound, wordnikAPI } from '../URLs/URLs'
 
+//Componente REACT
 export default function GifList () {
+  //Manejo de estado
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
+  //Funcion Principal
   function setup () {
     let promises = []
 
@@ -19,9 +21,8 @@ export default function GifList () {
       .catch(err => console.log(err))
       .finally(() => setIsLoading(false))
   }
-
+  //Buscar informacion en APIs
   async function wordGIF (num) {
-    //cambiar dom mostrando loader
     let response1, response2, json1, json2, img_url
     //await
     try {
@@ -45,10 +46,10 @@ export default function GifList () {
       img: img_url
     }
   }
-
   useEffect(() => {
     setup()
   }, [])
+  //Cambiar DOM mostrando loader mientras llegan las promesas
   if (isLoading) {
     return (
       <div className='lds-facebook'>
@@ -58,6 +59,7 @@ export default function GifList () {
       </div>
     )
   }
+  //DISPLAY
   return (
     <div>
       {results.map(result => (
