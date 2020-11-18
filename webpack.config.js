@@ -1,59 +1,27 @@
-const path = require('path')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const templateFn = require('adjust-sourcemap-loader').moduleFilenameTemplate({
-  format: 'projectRootRelative'
-})
-
-// const extractSass = new ExtractTextPlugin({
-//   filename: '[name].[contenthash].css',
-//   disable: false,
-//   allChunks: true
-// })
+const path = require('path');
 
 module.exports = {
   entry: './src/app.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js',
-    devtoolModuleFilenameTemplate: templateFn,
-    devtoolFallbackModuleFilenameTemplate: templateFn
-  },devtool: 'eval-cheap-source-map',
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
+  },
   module: {
-    rules: [
-      {
-        test: /\.s[ac]ss$/i,
-        // use: extractSass.extract({
-        use: [
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'resolve-url-loader'
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true
-            }
-          }
-        ] 
-      // })
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
-      }
-    ]
-  }, 
-  // plugins: [
-  //   extractSass
-  // ],
+    rules: [{
+      loader: 'babel-loader',
+      test: /\.js$/,
+      exclude: /node_modules/
+    }, {
+      test: /\.s?css$/,
+      use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader'
+      ]
+    }]
+  },
+  devtool: 'eval-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000
+    contentBase: path.join(__dirname, 'public')
   }
-}
+};

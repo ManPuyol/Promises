@@ -67,6 +67,7 @@ export default function GifSearch() {
   //DISPLAY
   return (
     <div>
+      <Header />
       <form onSubmit={onFormSubmit}>
         <input type="text" onChange={getWord} />
         <button>Get gif!</button>
