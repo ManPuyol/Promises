@@ -63,7 +63,7 @@ export default function GifList () {
   return (
     <div>
       {results.map(result => (
-        <div key='result.img' className='img__Container'>
+        <div key={result.img} className='img__Container'>
           <p>{result.word ? result.word : 'Not Found'}</p>
           <img src={result.img ? result.img : notFound} />
         </div>

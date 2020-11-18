@@ -1,14 +1,14 @@
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const templateFn = require('adjust-sourcemap-loader').moduleFilenameTemplate({
   format: 'projectRootRelative'
 })
 
-const extractSass = new ExtractTextPlugin({
-  filename: '[name].[contenthash].css',
-  disable: false,
-  allChunks: true
-})
+// const extractSass = new ExtractTextPlugin({
+//   filename: '[name].[contenthash].css',
+//   disable: false,
+//   allChunks: true
+// })
 
 module.exports = {
   entry: './src/app.js',
@@ -22,27 +22,22 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: extractSass.extract({
+        // use: extractSass.extract({
         use: [
           {
             loader: 'css-loader',
           },
           {
-            loader: 'resolve-url-loader',
-            options: Object.assign(
-              JSON.parse(process.env.LOADER_OPTIONS),
-              process.env.LOADER_JOIN && {
-              }
-            )
+            loader: 'resolve-url-loader'
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-              sourceMapContents: false
+              sourceMap: true
             }
           }
-        ] })
+        ] 
+      // })
       },
       {
         test: /\.(js|jsx)$/,
@@ -52,9 +47,10 @@ module.exports = {
         }
       }
     ]
-  }, plugins: [
-    extractSass
-  ],
+  }, 
+  // plugins: [
+  //   extractSass
+  // ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,

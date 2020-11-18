@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import GifList from './components/GifList'
+import AppRouter from './routes/AppRouter'
 import "./styles/styles.scss";
 
-ReactDOM.render(<GifList/>, document.getElementById('app'));
+ReactDOM.render(<AppRouter/>, document.getElementById('app'));
