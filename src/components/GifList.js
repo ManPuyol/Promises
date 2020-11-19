@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { giphyAPI, notFound, wordnikAPI } from '../URLs/URLs'
+import Header from '../components/Header'
 
 //Componente REACT
 export default function GifList () {
@@ -7,7 +8,8 @@ export default function GifList () {
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   //Funcion Principal
-  function setup () {
+  function setup (e) {
+    e === undefined ? null : e.preventDefault()
     let promises = []
 
     for (let i = 2; i < 7; i++) {
@@ -61,14 +63,15 @@ export default function GifList () {
   }
   //DISPLAY
   return (
-    <div>
-      <Header />
+    <div>     
+      <Header/>
       {results.map(result => (
         <div key={result.img} className='img__Container'>
           <p>{result.word ? result.word : 'Not Found'}</p>
           <img src={result.img ? result.img : notFound} />
         </div>
       ))}
+      <button onClick={setup}>More!</button>
     </div>
   )
 }

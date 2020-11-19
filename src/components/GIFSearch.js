@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { giphyAPI, notFound } from "../URLs/URLs";
+import Header from '../components/Header'
 //Componente REACT
 export default function GifSearch() {
   //Manejo de estado
@@ -67,7 +68,7 @@ export default function GifSearch() {
   //DISPLAY
   return (
     <div>
-      <Header />
+      <Header/>
       <form onSubmit={onFormSubmit}>
         <input type="text" onChange={getWord} />
         <button>Get gif!</button>
