@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { giphyAPI, notFound, wordnikAPI } from '../URLs/URLs'
+import Header from '../components/Header'
 
+//Componente REACT
 export default function GifList () {
+  //Manejo de estado
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
-  function setup () {
+  //Funcion Principal
+  function setup (e) {
+    e === undefined ? null : e.preventDefault()
     let promises = []
 
     for (let i = 2; i < 7; i++) {
@@ -19,9 +23,8 @@ export default function GifList () {
       .catch(err => console.log(err))
       .finally(() => setIsLoading(false))
   }
-
+  //Buscar informacion en APIs
   async function wordGIF (num) {
-    //cambiar dom mostrando loader
     let response1, response2, json1, json2, img_url
     //await
     try {
@@ -45,10 +48,10 @@ export default function GifList () {
       img: img_url
     }
   }
-
   useEffect(() => {
     setup()
   }, [])
+  //Cambiar DOM mostrando loader mientras llegan las promesas
   if (isLoading) {
     return (
       <div className='lds-facebook'>
@@ -58,14 +61,17 @@ export default function GifList () {
       </div>
     )
   }
+  //DISPLAY
   return (
-    <div>
+    <div>     
+      <Header/>
       {results.map(result => (
-        <div key='result.img' className='img__Container'>
+        <div key={result.img} className='img__Container'>
           <p>{result.word ? result.word : 'Not Found'}</p>
           <img src={result.img ? result.img : notFound} />
         </div>
       ))}
+      <button onClick={setup}>More!</button>
     </div>
   )
 }
