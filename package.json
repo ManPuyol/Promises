@@ -31,7 +31,8 @@
   },
   "scripts": {
     "start": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "dev-server": "webpack serve --watch"
   },
   "repository": {
     "type": "git",

@@ -6,10 +6,10 @@ const DashboardPage = () => {
   let history = useHistory()
 
   function RandGifLink () {
-    history.push('/public/RandGif')
+    history.push('/RandGif')
   }
   function GifSearchLink () {
-    history.push('/public/GifSearch')
+    history.push('/GifSearch')
   }
 
   return (
